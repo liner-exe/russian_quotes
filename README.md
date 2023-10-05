@@ -31,6 +31,18 @@ text, author = asyncio.run(main())
 
 print(f'Text: {text} Author: {author}')
 ```
+* ловля ошибки
+```py
+import russian_quotes
+
+try:
+    text, author = russian_quotes.get_quote()
+
+    print(text, author)
+
+except russian_quotes.ServerError:
+    print('not works')
+```
 
 ## Зависимости
 
