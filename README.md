@@ -1,3 +1,7 @@
+[![Downloads](https://static.pepy.tech/badge/russian-quotes)](https://pepy.tech/project/russian-quotes)
+[![Downloads](https://static.pepy.tech/badge/russian-quotes/month)](https://pepy.tech/project/russian-quotes)
+[![Downloads](https://static.pepy.tech/badge/russian-quotes/week)](https://pepy.tech/project/russian-quotes)
+
 # russian_quotes
 
 ## Установка
