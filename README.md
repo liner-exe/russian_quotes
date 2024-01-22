@@ -46,7 +46,7 @@ except russian_quotes.ServerError:
 
 ## Зависимости
 
-[Python >=3.10](https://www.python.org/downloads/release/python-310)
+[Python >=3.7](https://www.python.org/downloads/release/python-310)
 
 ## Лицензия
 
