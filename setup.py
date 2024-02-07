@@ -2,6 +2,12 @@ from setuptools import setup
 
 
 def readme():
+    """
+    Read the contents of README.md file.
+
+    Returns:
+        str: The contents of README.md file as a string.
+    """
     with open('README.md', encoding="utf-8") as file:
         _readme = file.read()
 
