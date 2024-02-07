@@ -4,13 +4,13 @@
 
 # russian_quotes
 
-## Установка
+## Installation
 ```shell
 pip install russian-quotes
 ```
 
-## Примеры использования
-* синхронный
+## Usage
+* **Sync**
 ```py
 from russian_quotes import get_quote
 
@@ -18,7 +18,7 @@ text, author = get_quote()
 
 print(f'Text: {text} Author: {author}')
 ```
-* асинхронный
+* **Async**
 ```py
 import asyncio
 from russian_quotes import get_quote_coro
@@ -31,7 +31,7 @@ text, author = asyncio.run(main())
 
 print(f'Text: {text} Author: {author}')
 ```
-* ловля ошибки
+* **Catch exception**
 ```py
 import russian_quotes
 
@@ -41,13 +41,13 @@ try:
     print(text, author)
 
 except russian_quotes.ServerError:
-    print('not works')
+    print('Error!')
 ```
 
-## Зависимости
+## Dependencies
 
 [Python >=3.7](https://www.python.org/downloads/release/python-310)
 
-## Лицензия
+## Legal
 
 [MIT](http://en.wikipedia.org/wiki/MIT_License)
