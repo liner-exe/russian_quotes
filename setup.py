@@ -16,10 +16,10 @@ def readme():
 
 setup(
     name='russian_quotes',
-    version='2.0',
+    version='2.0.1',
     author='liner',
     author_email='contact.liner999@gmail.com',
-    description='Quotes of famous people on russian',
+    description='Quotes of famous people in russian',
     long_description=readme(),
     long_description_content_type='text/markdown',
     license='MIT',
