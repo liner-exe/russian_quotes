@@ -30,7 +30,7 @@ setup(
     },
     package_data={'epic_free_games': ["VERSION"]},
     include_package_data=True,
-    install_requires=['aiohttp', 'asyncio'],
+    install_requires=['aiohttp', 'requests'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
