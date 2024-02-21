@@ -16,7 +16,7 @@ def readme():
 
 setup(
     name='russian_quotes',
-    version='2.0.1',
+    version='2.0.2',
     author='liner',
     author_email='contact.liner999@gmail.com',
     description='Quotes of famous people in russian',
