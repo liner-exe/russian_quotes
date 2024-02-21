@@ -1,11 +1,11 @@
 import aiohttp
 import requests
 from . import exceptions
-from typing import Union, Dict, Tuple, Literal, Coroutine
+from typing import Union, Dict, Tuple, Literal
 
 LANG = Literal['en', 'ru']
                 
-async def get_quote_async(lang: LANG = 'en', as_dict: bool = False) -> Coroutine[Union[Dict, Tuple]]:
+async def get_quote_async(lang: LANG = 'en', as_dict: bool = False) -> Union[Dict, Tuple]:
     """
     Get random quote on russian from forismatic API.
 
