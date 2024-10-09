@@ -10,8 +10,8 @@ async def get_quote_async(lang: Languages = Languages.ENGLISH, as_dict: bool = F
 
     Parameters:
         - lang `Literal['en', 'ru']`\n
-            If \'en\' returns quote in English\n
-            If \'ru\' returns quote in Russian
+            If Language.ENGLISH returns quote in English\n
+            If Language.RUSSIAN returns quote in Russian
         - as_dict `bool`\n
             If True returns dict\n
             If False returns tuple
@@ -23,7 +23,7 @@ async def get_quote_async(lang: Languages = Languages.ENGLISH, as_dict: bool = F
             Returns when server status isn\`t 200.
 
         `LanguageIsNotSupported`
-            Returns when lang isn`t \'en\' or \'ru\'
+            Returns when lang isn`t Language.ENGLISH or Language.RUSSIAN'
     """
     if lang not in Languages:
         raise exceptions.LanguageIsNotSupported('This language is not supported (Russian or English only).')
@@ -46,8 +46,8 @@ def get_quote(lang: Languages = Languages.ENGLISH, as_dict: bool = False) -> Uni
 
     Parameters:
         - lang `Literal['en', 'ru']`\n
-            If \'en\' returns quote in English\n
-            If \'ru\' returns quote in Russian
+            If Language.ENGLISH returns quote in English\n
+            If Language.RUSSIAN returns quote in Russian
         - as_dict `bool`\n
             If True returns dict\n
             If False returns tuple
@@ -59,7 +59,7 @@ def get_quote(lang: Languages = Languages.ENGLISH, as_dict: bool = False) -> Uni
             Returns when server status isn\`t 200.
 
         `LanguageIsNotSupported`
-            Returns when lang isn`t \'en\' or \'ru\'
+            Returns when lang isn`t Language.ENGLISH or Language.RUSSIAN'
     """
     if lang not in Languages:
         raise exceptions.LanguageIsNotSupported('This language is not supported (Russian or English only).')
