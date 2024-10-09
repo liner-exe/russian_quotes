@@ -28,7 +28,7 @@ setup(
       'GitHub': 'https://github.com/liner-exe/russian_quotes/',
       'Bug Tracker': 'https://github.com/liner-exe/russian_quotes/issues'
     },
-    package_data={'epic_free_games': ["VERSION"]},
+    package_data={'russian_quotes': ["VERSION"]},
     include_package_data=True,
     install_requires=['aiohttp', 'requests'],
     classifiers=[
