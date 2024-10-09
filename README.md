@@ -12,33 +12,32 @@ pip install russian-quotes
 ## Usage
 * **Sync**
 ```py
-from russian_quotes import get_quote
+from russian_quotes import get_quote, Languages
 
-text, author = get_quote()
+text, author = get_quote(lang=Languages.ENGLISH)
 
-print(f'Text: {text} Author: {author}')
+print(f'Quote: {text} Author: {author}')
 ```
 * **Async**
 ```py
 import asyncio
-from russian_quotes import get_quote_coro
+from russian_quotes import get_quote_async, Languages
 
 
 async def main():
-    return await get_quote_coro()
+    return await get_quote_async(lang=Languages.ENGLISH)
 
 text, author = asyncio.run(main())
 
 print(f'Text: {text} Author: {author}')
 ```
-* **Catch exception**
+* **Catching of exception**
 ```py
 import russian_quotes
 
 try:
     text, author = russian_quotes.get_quote()
-
-    print(text, author)
+    print(f'Text: {text} Author: {author}')
 
 except russian_quotes.ServerError:
     print('Error!')
