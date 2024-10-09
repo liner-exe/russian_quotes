@@ -1,11 +1,10 @@
 import aiohttp
 import requests
 from . import exceptions
-from typing import Union, Dict, Tuple, Literal
-
-LANG = Literal['en', 'ru']
+from .languages import Languages
+from typing import Union, Dict, Tuple
                 
-async def get_quote_async(lang: LANG = 'en', as_dict: bool = False) -> Union[Dict, Tuple]:
+async def get_quote_async(lang: Languages = Languages.ENGLISH, as_dict: bool = False) -> Union[Dict, Tuple]:
     """
     Get random quote on russian from forismatic API.
 
@@ -26,11 +25,11 @@ async def get_quote_async(lang: LANG = 'en', as_dict: bool = False) -> Union[Dic
         `LanguageIsNotSupported`
             Returns when lang isn`t \'en\' or \'ru\'
     """
-    if lang not in ['en', 'ru']:
-        raise exceptions.LanguageIsNotSupported('This language is not supported (only \'en\' or \'ru\').')
+    if lang not in Languages:
+        raise exceptions.LanguageIsNotSupported('This language is not supported (Russian or English only).')
 
     async with aiohttp.ClientSession() as session:
-        async with session.get(f'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang={lang}') as response:
+        async with session.get(f'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang={lang.value}') as response:
             if response.status == 200:
                 data = await response.json()
 
@@ -41,7 +40,7 @@ async def get_quote_async(lang: LANG = 'en', as_dict: bool = False) -> Union[Dic
             else:
                 raise exceptions.ServerError(f'Server isn`t responding. Status code: {response.status}')
     
-def get_quote(lang: LANG = "en", as_dict: bool = False) -> Union[Dict, Tuple]:
+def get_quote(lang: Languages = Languages.ENGLISH, as_dict: bool = False) -> Union[Dict, Tuple]:
     """
     Get random quote on russian from forismatic API.
 
@@ -62,12 +61,17 @@ def get_quote(lang: LANG = "en", as_dict: bool = False) -> Union[Dict, Tuple]:
         `LanguageIsNotSupported`
             Returns when lang isn`t \'en\' or \'ru\'
     """
-    if lang not in ['en', 'ru']:
-        raise exceptions.LanguageIsNotSupported('This language is not supported (only \'en\' or \'ru\').')
+    if lang not in Languages:
+        raise exceptions.LanguageIsNotSupported('This language is not supported (Russian or English only).')
     
-    data = requests.get(f'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang={lang}').json()
+    response = requests.get(f'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang={lang.value}')
+
+    if response.status_code != 200:
+        raise exceptions.ServerError(f'Server isn`t responding. Status code: {response.status}')
+    
+    data = response.json()
 
     if as_dict:
         return data
 
-    return data['quoteText'], data['quoteAuthor']
+    return data['quoteText'], data['quoteAuthor'], data['quoteLink']
