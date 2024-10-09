@@ -74,4 +74,4 @@ def get_quote(lang: Languages = Languages.ENGLISH, as_dict: bool = False) -> Uni
     if as_dict:
         return data
 
-    return data['quoteText'], data['quoteAuthor'], data['quoteLink']
+    return data['quoteText'], data['quoteAuthor']
