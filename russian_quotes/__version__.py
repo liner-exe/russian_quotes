@@ -1,7 +1,7 @@
 __title__ = 'russian-quotes'
 __description__ = 'Get quotes of famous people in russian & english.'
 __url__ = 'https://github.com/r-liner/russian_quotes'
-__version__ = '2.0.2'
+__version__ = '2.1.0'
 __author__ = 'r-liner'
 __author_email__ = 'contact.liner999@gmail.com'
 __license__ = 'MIT'
