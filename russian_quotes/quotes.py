@@ -9,9 +9,9 @@ async def get_quote_async(lang: Languages = Languages.ENGLISH, as_dict: bool = F
     Get random quote on russian from forismatic API.
 
     Parameters:
-        - lang `Literal['en', 'ru']`\n
-            If Language.ENGLISH returns quote in English\n
-            If Language.RUSSIAN returns quote in Russian
+        - lang `Languages`\n
+            If Languages.ENGLISH returns quote in English\n
+            If Languages.RUSSIAN returns quote in Russian
         - as_dict `bool`\n
             If True returns dict\n
             If False returns tuple
@@ -23,7 +23,7 @@ async def get_quote_async(lang: Languages = Languages.ENGLISH, as_dict: bool = F
             Returns when server status isn\`t 200.
 
         `LanguageIsNotSupported`
-            Returns when lang isn`t Language.ENGLISH or Language.RUSSIAN'
+            Returns when lang isn`t Languages.ENGLISH or Languages.RUSSIAN'
     """
     if lang not in Languages:
         raise exceptions.LanguageIsNotSupported('This language is not supported (Russian or English only).')
@@ -45,9 +45,9 @@ def get_quote(lang: Languages = Languages.ENGLISH, as_dict: bool = False) -> Uni
     Get random quote on russian from forismatic API.
 
     Parameters:
-        - lang `Literal['en', 'ru']`\n
-            If Language.ENGLISH returns quote in English\n
-            If Language.RUSSIAN returns quote in Russian
+        - lang `Languages`\n
+            If Languages.ENGLISH returns quote in English\n
+            If Languages.RUSSIAN returns quote in Russian
         - as_dict `bool`\n
             If True returns dict\n
             If False returns tuple
@@ -59,7 +59,7 @@ def get_quote(lang: Languages = Languages.ENGLISH, as_dict: bool = False) -> Uni
             Returns when server status isn\`t 200.
 
         `LanguageIsNotSupported`
-            Returns when lang isn`t Language.ENGLISH or Language.RUSSIAN'
+            Returns when lang isn`t Languages.ENGLISH or Languages.RUSSIAN'
     """
     if lang not in Languages:
         raise exceptions.LanguageIsNotSupported('This language is not supported (Russian or English only).')
