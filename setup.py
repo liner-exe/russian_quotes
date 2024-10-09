@@ -16,17 +16,17 @@ def readme():
 
 setup(
     name='russian_quotes',
-    version='2.0.2',
+    version='2.1.0',
     author='liner',
     author_email='contact.liner999@gmail.com',
-    description='Quotes of famous people in russian',
+    description='Quotes of famous people in Russian & English',
     long_description=readme(),
     long_description_content_type='text/markdown',
     license='MIT',
     packages=['russian_quotes'],
     project_urls={
-      'GitHub': 'https://github.com/r-liner/russian_quotes/',
-      'Bug Tracker': 'https://github.com/r-liner/russian_quotes/issues'
+      'GitHub': 'https://github.com/liner-exe/russian_quotes/',
+      'Bug Tracker': 'https://github.com/liner-exe/russian_quotes/issues'
     },
     package_data={'epic_free_games': ["VERSION"]},
     include_package_data=True,
