@@ -14,11 +14,11 @@ Unofficial Forismatic API Wrapper.
 ### Sync
 
 ```py
-from russian_quotes import get_quote
+from russian_quotes import get_quote, Languages
 
-quote_author, quote_text = get_quote()
+text, author = get_quote(lang=Languages.ENGLISH)
 
-print(f'{quote_author}-{quote_text}')
+print(f'Quote: {text}-{author}')
 
 >>> The undertaking of a new action brings new strength. -Richard Evans
 ```
@@ -26,10 +26,10 @@ print(f'{quote_author}-{quote_text}')
 ### Async
 
 ```py
-from russian_quotes import get_quote_async
+from russian_quotes import get_quote_async, Languages
 import asyncio
 
-quote_author, quote_text = asyncio.run(get_quote_async())
+quote_author, quote_text = asyncio.run(get_quote_async(lang=Languages.ENGLISH))
 
 print(f'{quote_author}-{quote_text}')
 
@@ -39,6 +39,7 @@ print(f'{quote_author}-{quote_text}')
 
 from .quotes import get_quote, get_quote_async
 from .exceptions import ServerError, LanguageIsNotSupported
+from .languages import Languages
 from .__version__ import (
     __author__,
     __author_email__,
