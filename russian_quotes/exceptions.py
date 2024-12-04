@@ -13,3 +13,10 @@ class LanguageIsNotSupported(Exception):
     This error is raised when language is not supported.
     """
     pass
+
+class QuoteKeyError(Exception):
+    """
+    Custom exception for quote key errors.
+
+    This error is raised when the key is improper or too big.
+    """
