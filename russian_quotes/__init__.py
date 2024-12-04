@@ -38,7 +38,11 @@ print(f'{quote_author}-{quote_text}')
 """
 
 from .quotes import get_quote, get_quote_async
-from .exceptions import ServerError, LanguageIsNotSupported
+from .exceptions import (
+    ServerError,
+    LanguageIsNotSupported,
+    QuoteKeyError
+)
 from .languages import Languages
 from .__version__ import (
     __author__,
