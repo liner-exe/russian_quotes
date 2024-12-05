@@ -20,3 +20,4 @@ class QuoteKeyError(Exception):
 
     This error is raised when the key is improper or too big.
     """
+    pass
