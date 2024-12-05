@@ -1,11 +1,11 @@
 import aiohttp
 import requests
 from . import exceptions
-from .languages import Languages
-from .formats import Formats
+from .languages import Language
+from .formats import Format
 from typing import Union, Dict, Tuple
                 
-async def get_quote_async(lang: Languages = Languages.ENGLISH, as_dict: bool = False) -> Union[Dict, Tuple]:
+async def get_quote_async(lang: Language = Language.ENGLISH, as_dict: bool = False) -> Union[Dict, Tuple]:
     """
     Get random quote on russian from forismatic API.
 
@@ -26,7 +26,7 @@ async def get_quote_async(lang: Languages = Languages.ENGLISH, as_dict: bool = F
         `LanguageIsNotSupported`
             Returns when lang isn`t Languages.ENGLISH or Languages.RUSSIAN'
     """
-    if lang not in Languages:
+    if lang not in Language:
         raise exceptions.LanguageIsNotSupported('This language is not supported (Russian or English only).')
 
     async with aiohttp.ClientSession() as session:
@@ -42,9 +42,9 @@ async def get_quote_async(lang: Languages = Languages.ENGLISH, as_dict: bool = F
                 raise exceptions.ServerError(f'Server isn`t responding. Status code: {response.status}')
     
 def get_quote(
-    lang: Languages = Languages.ENGLISH,
+    lang: Language = Language.ENGLISH,
     as_dict: bool = False,
-    format: str = Formats.JSON,
+    format: str = Format.JSON,
     key: int = None
 ) -> Union[Dict, Tuple]:
     """
@@ -67,15 +67,18 @@ def get_quote(
         `LanguageIsNotSupported`
             Returns when lang isn`t Languages.ENGLISH or Languages.RUSSIAN'
     """
-    if lang not in Languages:
-        raise exceptions.LanguageIsNotSupported('This language is not supported (Russian or English only).')
+    if not isinstance(lang, Language):
+        raise TypeError(f'You must pass lang with enum Languages. Not with {type(lang)}')
+    
+    if not isinstance(format, Format):
+        raise TypeError(f'You must pass format with enum Formats. Not with {type(format)}')
     
     if key and not (1 <= key <= 999999):
         raise exceptions.QuoteKeyError('Improper key passed.')
     
     params = {
         "method": "getQuote",
-        "format": format,
+        "format": format.value,
         "lang": lang.value,
     }
 
@@ -85,15 +88,15 @@ def get_quote(
     response = requests.get('https://api.forismatic.com/api/1.0/', params=params)
 
     if response.status_code == 200:
-        if format == Formats.JSON:
+        if format == Format.JSON:
             data = response.json()
-        elif format in (Formats.XML, Formats.TEXT, Formats.HTML):
-            data = response.text
-        
-        if format == Formats.JSON and "quoteText" in data and "quoteAuthor" in data:
+
             if as_dict:
                 return data
             return data['quoteText'], data['quoteAuthor']
+        
+        elif format in (Format.XML, Format.TEXT, Format.HTML):
+            data = response.text
         
         return data
     else:
