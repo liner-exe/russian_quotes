@@ -70,7 +70,7 @@ def get_quote(
     if lang not in Languages:
         raise exceptions.LanguageIsNotSupported('This language is not supported (Russian or English only).')
     
-    if 1 > key > 999999:
+    if key and not (1 <= key <= 999999):
         raise exceptions.QuoteKeyError('Improper key passed.')
     
     params = {
