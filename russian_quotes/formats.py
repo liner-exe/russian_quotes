@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Formats(Enum):
+class Format(Enum):
     JSON = "json"
     XML = "xml"
     HTML = "html"
