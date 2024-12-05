@@ -82,7 +82,7 @@ def get_quote(
     if key:
         params['key'] = key
     
-    response = requests.get(f'https://api.forismatic.com/api/1.0/', params=params)
+    response = requests.get('https://api.forismatic.com/api/1.0/', params=params)
 
     if response.status_code == 200:
         if format == Formats.JSON:
