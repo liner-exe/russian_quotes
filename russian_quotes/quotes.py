@@ -87,8 +87,8 @@ def get_quote(
     if response.status_code == 200:
         if format == Formats.JSON:
             data = response.json()
-        elif format == Formats.XML or format == Formats.TEXT or format == Formats.HTML:
-            data = response.text()
+        elif format in (Formats.XML, Formats.TEXT, Formats.HTML):
+            data = response.text
         
         if format == Formats.JSON and "quoteText" in data and "quoteAuthor" in data:
             if as_dict:
