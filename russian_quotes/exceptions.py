@@ -21,3 +21,11 @@ class QuoteKeyError(Exception):
     This error is raised when the key is improper or too big.
     """
     pass
+
+class FormatIsNotSupported(Exception):
+    """
+    Custom exception for format errors.
+
+    This error is raised when the format is not supported.
+    """
+    pass
